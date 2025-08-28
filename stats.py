@@ -21,10 +21,27 @@ def letter_count(path_to_file):
     #print(character_count)
     return character_count
 
+def report(items):
+    list_of_dict = []
+    new_dict = {}
+    for item in items:
+        #list_of_dict = []
+        if item.isalpha():
+            tmp_dict = {}
+            tmp_dict["char"] = item
+            tmp_dict["num"] = items[item]
+            #print(tmp_dict)
+            list_of_dict.append(tmp_dict)
+    #print(list_of_dict)
+    list_of_dict.sort(key=sort_on, reverse = True)
+    #print(list_of_dict)
+    return list_of_dict
 
-
+def sort_on(items):
+    return items["num"]
 
 def main():
-    letter_count("books/frankenstein.txt")
+    dict_1 = letter_count("books/frankenstein.txt")
+    report(dict_1)
 
 main()
